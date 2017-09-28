@@ -1,5 +1,4 @@
 { 
-    
     " html " : { 
         " allowed_file_extensions " : [ " htm " , " html " , " xhtml " , " shtml " , " xml " , " svg "], 
         " arch_style " : " collapse " , // [collapse | expand | end-expand | none]将大括号放在与控制语句（默认）相同的行上,或者将自己的大括号放在自己的行（Allman / ANSI style）上,或者试图将它们保持在自己的位置 
@@ -11,7 +10,7 @@
         " indent_size " : 4 , //缩进大小 
         " max_preserve_newlines " : 0 , //要保留在一个块中的最大换行符数（0个禁用） 
         " preserve_newlines " : true , //是否应该保留元素之前的现有行中断（仅在元素之前工作,而不是在标签内部或文本中） 
-        "未格式化" : [ " a " , " span " , " img " , " code " , " pre " , " sub " , " sup " , " em " , " strong " , " b " , " i " " h1 " , " h4 " , " h5 " , " h6 " ）], //列表不应重新格式化 
+        "未格式化" : [ " a " , " span " , " img " , " code " , " pre " , " sub " , " sup " , " em " , " strong " , " b " , " i ", " h1 " , " h4 " , " h5 " , " h6 " ], //列表不应重新格式化 
         " wrap_line_length " : 0 //在这个字符数（0个禁用）之后,行应该在下一个机会中换行 
     }, 
     " css " : { 
