@@ -1,10 +1,9 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/test\/src\/css\/index\.scss}line{font-family:\000031}}
-.test {
-  width: 100px;
-  height: 100px;
-  background-color: #666666;
-  text-align: center;
-  display: flex;
-  align-items: center; }
-
 /*# sourceMappingURL=index.css.map */
+.main {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

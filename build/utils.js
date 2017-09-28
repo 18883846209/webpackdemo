@@ -27,7 +27,7 @@ entryFiles.forEach((filePath) => {
 	// var filename = filePath.substring(0, filePath.lastIndexOf('.'))	
 	map[filename] = filePath
 })
-return map
+	return map
 }
 
 //多页面输出配置

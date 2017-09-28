@@ -57,7 +57,7 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
- 
+
         // new HtmlWebpackPlugin({
         //     filename: 'article.html',
         //     template: 'article.html',
