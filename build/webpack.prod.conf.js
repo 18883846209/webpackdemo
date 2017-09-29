@@ -13,38 +13,7 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
 	module: {
-		rules: [{
-			test: /\.css$/,
-			use: ExtractTextPlugin.extract({
-				fallback: 'style-loader',
-				use: [{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1
-						}
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: (loader) => [
-								require('postcss-import')({
-									root: loader.resourcePath
-								}),
-								require('postcss-cssnext')({
-									browsers: [
-										'iOS >= 7',
-										'Android >=4.0'
-									]
-								}),
-								require('cssnano')({
-									autoprefixer: false
-								})
-							]
-						}
-					}
-				]
-			})
-		}]
+		rules: [utils.cssPro()]
 	},
 	devtool: config.build.productionSourceMap ? '#source-map' : false,
 	output: {
@@ -76,7 +45,7 @@ var webpackConfig = merge(baseWebpackConfig, {
 				safe: true
 			}
 		}),
-		
+
 		// split vendor js into its own file
 		// new webpack.optimize.CommonsChunkPlugin({
 		// 	name: 'vendor',

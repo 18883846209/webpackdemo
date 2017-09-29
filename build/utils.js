@@ -1,6 +1,6 @@
 var path = require('path')
 var config = require('../config')
-// var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function(_path) {
 	var assetsSubDirectory = process.env.NODE_ENV === 'production' ?
@@ -24,7 +24,7 @@ var entryFiles = glob.sync(PAGE_PATH + '/*.js')
 var map = {}
 entryFiles.forEach((filePath) => {
 	var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
-	// var filename = filePath.substring(0, filePath.lastIndexOf('.'))	
+	// var filename = filePath.substring(0, filePath.lastIndexOf('.'))
 	map[filename] = filePath
 })
 	return map
@@ -37,7 +37,7 @@ let entryHtml = glob.sync(HTML_PATH + '/*.html')
 let arr = []
 entryHtml.forEach((filePath) => {
 	let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
-	// let filename = filePath.substring(0, filePath.lastIndexOf('.'))	
+	// let filename = filePath.substring(0, filePath.lastIndexOf('.'))
 	let conf = {
 		// 模板来源
 		template: filePath,
@@ -60,6 +60,77 @@ entryHtml.forEach((filePath) => {
 	arr.push(new HtmlWebpackPlugin(conf))
 })
 return arr
+}
+
+exports.cssDev = function() {
+	return {
+		test: /\.css$/,
+		use: [
+			'style-loader',
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 1,
+					sourceMap: config.dev.cssSourceMap
+				}
+			},
+			{
+				loader: 'postcss-loader',
+				options: {
+					sourceMap: config.dev.cssSourceMap,
+					plugins: (loader) => [
+						require('postcss-import')({
+							root: loader.resourcePath
+						}),
+						require('postcss-cssnext')({
+							browsers: [
+								'iOS >= 7',
+								'Android >=4.0'
+							]
+						}),
+						require('cssnano')({
+							autoprefixer: false
+						})
+					]
+				}
+			}
+		]
+	}
+}
+
+exports.cssPro = function() {
+	return {
+		test: /\.css$/,
+		use: ExtractTextPlugin.extract({
+			fallback: 'style-loader',
+			use: [{
+					loader: 'css-loader',
+					options: {
+						importLoaders: 1
+					}
+				},
+				{
+					loader: 'postcss-loader',
+					options: {
+						plugins: (loader) => [
+							require('postcss-import')({
+								root: loader.resourcePath
+							}),
+							require('postcss-cssnext')({
+								browsers: [
+									'iOS >= 7',
+									'Android >=4.0'
+								]
+							}),
+							require('cssnano')({
+								autoprefixer: false
+							})
+						]
+					}
+				}
+			]
+		})
+	}
 }
 // exports.cssLoaders = function(options) {
 // 	options = options || {}
@@ -110,7 +181,7 @@ return arr
 // 	}
 // }
 
-// // Generate loaders for standalone style files (outside of .vue)
+// // // Generate loaders for standalone style files (outside of .vue)
 // exports.styleLoaders = function(options) {
 // 	var output = []
 // 	var loaders = exports.cssLoaders(options)
