@@ -13,8 +13,12 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
 	module: {
+		// rules: utils.styleLoaders({
+		//   sourceMap: config.build.productionSourceMap,
+		//   extract: true
+		// })
 		rules: [utils.cssPro()]
-	},
+	  },
 	devtool: config.build.productionSourceMap ? '#source-map' : false,
 	output: {
 		path: config.build.assetsRoot,
