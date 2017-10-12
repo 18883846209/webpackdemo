@@ -6,3 +6,39 @@
 	display: flex;
 	align-items: center;
 }
+.no, .no body {
+	overflow: hidden;
+}
+.no body {
+	position: relative;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+.hidden {
+	display: none !important;
+}
+.tip {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 9999;
+	.content {
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		top: calc(50% - 60px);
+		left: calc(50% - 60px);
+		border: 1px solid red;
+		overflow: scroll;
+		p {
+			color: #fff;
+		}
+	}
+}
+
+
