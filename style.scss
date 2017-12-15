@@ -1,0 +1,13 @@
+// @mixin bgImg($url){
+//     background-image: url($url + "@2x.png");
+//     @media (-webkit-min-device-pixel-ratio: 3) and (min-device-pixel-ratio: 3){
+//       background-image: url($url + "@3x.png");
+//     }
+// }
+// .test {
+//     @include bgImg('./img/topic');
+// }
+
+.test {
+    width: 100px;
+}
