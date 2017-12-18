@@ -4,7 +4,7 @@ import './css/index.css';
 
 $('p').on('click', () => {
 	let tip = $('.tip');
-	// let con = $('.content');
+	// let con = $('.content')
 	$('html').addClass('no');
 	scroll(tip, $('.content'));
 	$('.tip').removeClass('hidden');
